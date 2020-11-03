@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 
-int strncmp(const char *str1, const char *str2, size_t n)
+int ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	int i = 0;
 	while( i < n)

@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <string.h>
+//#include <string.h>
 #include <stdio.h>
-#include "ft_strchr.c"
+//#include <stdlib.h>
+#include "ft_strdup.c"
 #include "libft.h"
 
 void ft_putchar(char c)
@@ -22,7 +23,7 @@ void ft_putchar(char c)
 
 int		main(void)
 {
-	char src[100] = "hello world";
+	const char src[100] = "hello world";
 	char dest[100] = "hello world";
 	char src1[100] = "123456789";
 	char dest1[100] = "123456789";
@@ -105,12 +106,18 @@ int		main(void)
 	printf("%s \n",dest);
 	printf("%i",a);
 */
-	sym = ft_strchr(src1,'h');
+/*	sym = ft_strchr(src1,'h');
 	if (sym==NULL)
 		printf ("Символ в строке не найден\n");
 	else
 	printf ("Искомый символ в строке на позиции # \n");
-//const char *largestring = "Foo Bar Bazerrr";
+*/
+	sym = strdup (src1);
+	printf ("Дубликат: %s\n", sym);
+	sym1 = ft_strdup(dest);
+	printf ("Дубликат: %s\n", sym1);
+
+ //const char *largestring = "Foo Bar Bazerrr";
 //const char *smallstring = "22";
 //char *ptr;
 //ptr = strnstr(largestring, smallstring, 15);
