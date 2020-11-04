@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <string.h>
 
 void * ft_calloc(size_t arr,size_t num)
 {
@@ -10,4 +11,5 @@ void * ft_calloc(size_t arr,size_t num)
 	ft_memset(mem,num,arr);
 	return(mem);
 }
+
 

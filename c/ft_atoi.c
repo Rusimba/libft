@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-//#include <unistd.h>
-//#include <stdlib.h>
+#include "libft.h"
 
 int ft_atoi(const char *str)
 {
@@ -43,15 +41,5 @@ int ft_atoi(const char *str)
         i++;
     }
     res = res * sign;
-     printf(" result true = %i",res);
     return(res);
-}
-
-int main (void)
-{
-    char *Str = "   -123";
-    int  Num=0;
-    Num = atoi(Str);
-    //printf ("%d\n",Num);
-    return 0;
 }

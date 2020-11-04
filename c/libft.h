@@ -1,8 +1,10 @@
-#define LIBFT_H
 
 #ifndef LIBFT_H
+# define LIBFT_H
 
 #include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 
 int 	ft_atoi(const char *str);
 void 	ft_bzero(void *s, size_t n);
@@ -24,9 +26,11 @@ size_t 	ft_strlcpy(char * dst, const char *  src, size_t dstsize);
 int		ft_strlen(char *str);
 int 	ft_strncmp(const char *str1, const char *str2, size_t n);
 char	* ft_strnstr(const char	*big, const char *little, size_t len);
-char 	*ft_strchr (const char *str, int ch)
+char 	*ft_strchr (const char *str, int ch);
+char 	*ft_strrchr (const char *str, int ch);
 int 	ft_tolower(int c);
 int 	ft_toupper(int c);
-char 	*strdup(const char *str);
+char 	*ft_strdup(const char *str);
+
 
 #endif
