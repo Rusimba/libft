@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dstonesn <dstonesn@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dstonesn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/30 18:07:40 by dstonesn          #+#    #+#             */
-/*   Updated: 2020/10/30 18:35:31 by dstonesn         ###   ########.fr       */
+/*   Created: 2020/09/30 10:06:23 by dstonesn          #+#    #+#             */
+/*   Updated: 2020/09/30 19:39:52 by dstonesn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memset (void *destination, int c, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
 	int i;
-	unsigned char * pchar;
 
-	pchar = (unsigned char *)destination;
-	i=0;
-	while(i<n)
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
 	{
-		pchar[i] = (unsigned char)c ;
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return(destination);
+	write(fd, "\n", 1);
 }

@@ -12,10 +12,7 @@
 
 #include "libft.h"
 
-#include "libft.h"
-
-static int
-ft_char_in_set(char c, char const *set)
+static int	ft_char_in_set(char c, char const *set)
 {
 	size_t	i;
 
@@ -29,8 +26,7 @@ ft_char_in_set(char c, char const *set)
 	return (0);
 }
 
-char
-*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	size_t	i;

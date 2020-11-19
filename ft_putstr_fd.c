@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dstonesn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/21 10:41:35 by dstonesn          #+#    #+#             */
-/*   Updated: 2020/09/22 17:59:43 by dstonesn         ###   ########.fr       */
+/*   Created: 2020/09/30 10:06:23 by dstonesn          #+#    #+#             */
+/*   Updated: 2020/09/30 19:39:52 by dstonesn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!s)
+		return ;
+	while (s[i] != '\0')
 	{
+		write(fd, &s[i], 1);
 		i++;
 	}
-	return (i);
 }

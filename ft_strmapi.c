@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dstonesn <dstonesn@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: dstonesn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/30 12:10:23 by dstonesn          #+#    #+#             */
-/*   Updated: 2020/10/30 12:21:32 by dstonesn         ###   ########.fr       */
+/*   Created: 2020/09/30 10:06:23 by dstonesn          #+#    #+#             */
+/*   Updated: 2020/09/30 19:39:52 by dstonesn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strncmp(const char *str1, const char *str2, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int i = 0;
-	while( i < n)
+	char	*str;
+	size_t	i;
+
+	if (!(str = ft_strdup(s)))
+		return (NULL);
+	i = 0;
+	while (str[i])
 	{
-		if(str1[i] != str2[i])
-		{
-			return(str1[i] - str2[i]);
-		}
-	i++;
+		str[i] = (*f)(i, str[i]);
+		i++;
 	}
-	return(0);
+	return (str);
 }

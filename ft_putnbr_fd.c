@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dstonesn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/21 10:41:35 by dstonesn          #+#    #+#             */
-/*   Updated: 2020/09/22 17:59:43 by dstonesn         ###   ########.fr       */
+/*   Created: 2020/09/30 10:06:23 by dstonesn          #+#    #+#             */
+/*   Updated: 2020/09/30 19:39:52 by dstonesn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	char s;
 
-	i = 0;
-	j = 0;
-	str = (char*)malloc(sizeof(*s1) + sizeof(*s2));
-	if (!str)
-		return (NULL);
-	while (s1[i] != '\0')
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	if (n < 0)
 	{
-		str[j] = s1[i];
-		i++;
-		j++;
+		write(fd, "-", 1);
+		n = n * -1;
 	}
-	i = 0;
-	while (s2[i] != '\0')
+	if (n < 10)
 	{
-		str[j] = s2[i];
-		j++;
-		i++;
+		s = n + '0';
+		write(fd, &s, 1);
 	}
-	str[j] = '\0';
-	return (str);
+	if (n > 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
 }
