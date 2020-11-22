@@ -12,96 +12,98 @@
 
 #include "libft.h"
 
-static	int		row(char const *s, char c)
+static	int		len_to_c(char const *s, char c)
 {
-	size_t	i;
-	size_t	n;
+	int	i;
+	int	n;
 
 	i = 0;
 	n = 0;
 	while (s[i])
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		if (s[i] != '\0' && s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			n++;
 		i++;
 	}
 	return (n);
 }
 
-static	int		chr_len(char const *s, char c)
+static	int		strlen_to_c(char const *s, char c)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i] != c && s[i])
+	{
 		i++;
+	}
 	return (i);
 }
 
 static	char	*get_word(char const **s, char c)
 {
-	size_t	i;
-	size_t	len;
+	int		i;
+	int		j;
 	char	*ptr;
 
 	i = 0;
 	while (**s == c)
 		(*s)++;
-	len = chr_len(*s, c);
-	ptr = (char*)malloc(sizeof(char) * (len + 1));
+	j = strlen_to_c(*s, c);
+	ptr = (char*)malloc(sizeof(char) * (j + 1));
 	if (!ptr)
 		return (NULL);
-	while (i < len)
+	while (i < j)
 	{
 		ptr[i] = s[0][i];
 		i++;
 	}
-	ptr[i] = '\0';
 	while (**s != c && **s)
 		(*s)++;
+	ptr[i] = '\0';
 	return (ptr);
 }
 
-static	void	free_dst(char **dst, size_t i)
+static	void	freez(char **srs, int i)
 {
 	size_t	j;
 
 	j = 0;
 	while (j < i)
 	{
-		free(dst[j]);
-		dst[j] = NULL;
+		free(srs[j]);
+		srs[j] = NULL;
 		j++;
 	}
-	free(dst);
-	dst = NULL;
+	free(srs);
+	srs = NULL;
 }
 
 char			**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	num;
-	char	**dst;
-	char	*ptr;
+	char	**res;
+	char	*time;
+	int		i;
+	int		j;
 
-	i = 0;
 	if (!s)
 		return (NULL);
-	num = row(s, c);
-	dst = (char**)malloc(sizeof(char*) * (num + 1));
-	if (!dst)
+	j = len_to_c(s, c);
+	res = malloc(sizeof(char*) * (j + 1));
+	if (!res)
 		return (NULL);
-	while (i < num)
+	i = 0;
+	while (i < j)
 	{
-		ptr = get_word(&s, c);
-		if (!ptr)
+		time = get_word(&s, c);
+		if (!time)
 		{
-			free_dst(dst, i);
+			freez(res, i);
 			return (NULL);
 		}
-		dst[i] = ptr;
+		res[i] = time;
 		i++;
 	}
-	dst[i] = NULL;
-	return (dst);
+	res[i] = NULL;
+	return (res);
 }
